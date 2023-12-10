@@ -21,10 +21,6 @@ function Home() {
         <div className='flex justify-center mt-4'>
         <img className='rounded-full w-56 hover:ease-in duration-300 cursor-pointer' src={Fajar} alt="" />
         </div>
-        <div className='flex justify-center m-5'>
-          <button >Contact Me</button>
-          <button>Hai</button>
-        </div>
     </div>
     </div>
     

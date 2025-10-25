@@ -15,6 +15,7 @@ function AboutScroll() {
     }),
     {
       rootMargin: '-40% 0%',
+      once : true,
     }
   )
 

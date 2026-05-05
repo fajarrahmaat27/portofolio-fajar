@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* ── FONTS ── */
+@theme {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Mono', monospace;
+}
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Colors */
+  --color-bg:         #080808;
+  --color-surface:    #111111;
+  --color-border:     #222222;
+  --color-text:       #f0ede8;
+  --color-muted:      #555555;
+  --color-accent:     #e8ff47;   /* electric lime — your signature color */
+  --color-accent-dim: #e8ff4720;
+
+  /* Typography scale */
+  --text-hero:   clamp(5rem, 15vw, 14rem);
+  --text-h1:     clamp(2.5rem, 6vw, 5rem);
+  --text-h2:     clamp(1.5rem, 3vw, 2.5rem);
+  --text-body:   1rem;
+  --text-small:  0.8rem;
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 10vw, 10rem);
+
+  /* Transitions */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-slow: 1.2s;
+  --duration-mid: 0.6s;
+  --duration-fast: 0.3s;
+}
+
+/* ── BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none; 
+}
+
+/* ── SELECTION ── */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 2px; }

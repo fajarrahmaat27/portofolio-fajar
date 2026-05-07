@@ -5,14 +5,14 @@ import styles from './Contact.module.css'
 const LINKS = [
   {
     id: 'contact-email',
-    label: 'fajarrahmaat27@gmail.com',
-    href: 'mailto:fajarrahmaat27@gmail.com',
+    label: 'fajarrahmat934@gmail.com',
+    href: 'mailto:fajarrahmat934@gmail.com',
     type: 'Email',
   },
   {
     id: 'contact-linkedin',
     label: 'linkedin.com/in/fajarrahmat',
-    href: 'https://linkedin.com/in/fajarrahmat',
+    href: 'https://www.linkedin.com/in/fajar-rahmat/',
     type: 'LinkedIn',
   },
   {
@@ -104,7 +104,7 @@ export default function Contact() {
 
       {/* Footer */}
       <div className={styles.footer}>
-        <span className={styles.footerLeft}>© 2025 Fajar Rahmat</span>
+        <span className={styles.footerLeft}>© 2026 Fajar Rahmat</span>
         <span className={styles.footerRight}>Built with React + Framer Motion</span>
       </div>
 

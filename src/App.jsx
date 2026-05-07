@@ -56,14 +56,14 @@ export default function App() {
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current}
-            ref={current === 2 ? chapterScrollRef : null}
+            ref={chapterScrollRef}
             custom={direction}
             variants={variants}
             initial="enter"
             animate="center"
             exit="exit"
             transition={transition}
-            className={current === 2 ? 'chapter chapter--scrollable' : 'chapter'}
+            className="chapter chapter--scrollable"
           >
             <ChapterComponent {...chapterProps[current]} />
           </motion.div>

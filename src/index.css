@@ -1,40 +1,47 @@
-@import "tailwindcss";
-
-/* ── FONTS ── */
-@theme {
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'DM Mono', monospace;
-}
-
 /* ── DESIGN TOKENS ── */
 :root {
-  /* Colors */
-  --color-bg:         #080808;
-  --color-surface:    #111111;
-  --color-border:     #222222;
-  --color-text:       #f0ede8;
-  --color-muted:      #555555;
-  --color-accent:     #e8ff47;   /* electric lime — your signature color */
-  --color-accent-dim: #e8ff4720;
+  /* Colors — warm editorial palette */
+  --color-bg:         #F5F4F0;
+  --color-ink:        #0D0D0D;
+  --color-muted:      #9A9A8E;
+  --color-border:     #E2E0D9;
+  --color-surface:    #EDECE8;
+  --color-accent:     #1A1A2E;
+  --color-accent-hi:  #4F46E5;
+  --color-glass:      rgba(245, 244, 240, 0.85);
 
-  /* Typography scale */
-  --text-hero:   clamp(5rem, 15vw, 14rem);
-  --text-h1:     clamp(2.5rem, 6vw, 5rem);
-  --text-h2:     clamp(1.5rem, 3vw, 2.5rem);
-  --text-body:   1rem;
-  --text-small:  0.8rem;
+  /* Typography */
+  --font-display:  'Instrument Serif', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', 'Courier New', monospace;
+
+  --text-xs:    0.72rem;
+  --text-sm:    0.875rem;
+  --text-base:  1rem;
+  --text-lg:    1.25rem;
+  --text-xl:    1.5rem;
+  --text-2xl:   2rem;
+  --text-3xl:   clamp(2rem, 4vw, 3.5rem);
+  --text-hero:  clamp(4.5rem, 11vw, 10rem);
 
   /* Spacing */
-  --section-padding: clamp(4rem, 10vw, 10rem);
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   1.5rem;
+  --space-lg:   2.5rem;
+  --space-xl:   4rem;
+  --space-2xl:  clamp(3rem, 8vw, 7rem);
 
-  /* Transitions */
-  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-slow: 1.2s;
-  --duration-mid: 0.6s;
-  --duration-fast: 0.3s;
+  /* Motion */
+  --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snappy:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast:     180ms;
+  --dur-mid:      480ms;
+  --dur-slow:     900ms;
 }
 
-/* ── BASE ── */
+/* ── RESET ── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -42,17 +49,22 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  height: 100%;
+  /* lenis will handle scroll */
+  scroll-behavior: auto;
 }
 
 body {
   background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: var(--text-body);
-  line-height: 1.6;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  min-height: 100%;
   overflow-x: hidden;
-  cursor: none; 
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── SELECTION ── */
@@ -62,6 +74,94 @@ body {
 }
 
 /* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+
+/* ── TYPOGRAPHY BASE ── */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+p { line-height: 1.7; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── CHAPTER LAYOUT ── */
+/* The outer container: a horizontal row of chapters */
+.chapter-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Each chapter: full screen, positioned absolute */
+.chapter {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 7vw, 8rem);
+}
+
+/* The Work chapter allows internal scroll */
+.chapter--scrollable {
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* ── UTILITY ── */
+.u-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.u-serif {
+  font-family: var(--font-display);
+}
+
+.u-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ── KEYFRAMES ── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+@keyframes draw-line {
+  from { scaleX: 0; }
+  to   { scaleX: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,165 @@
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 6rem) clamp(2rem, 7vw, 8rem);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+/* ── Status dot ── */
+.status {
+  position: absolute;
+  top: clamp(5.5rem, 9vw, 7.5rem);
+  left: clamp(2rem, 7vw, 8rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+.statusText {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ── Background SVG ── */
+.bgCurve {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ── Name ── */
+.nameWrapper {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  margin-bottom: var(--space-lg);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+}
+
+.nameSecond {
+  /* italic for the second line — creates editorial rhythm */
+  font-style: italic;
+  color: var(--color-ink);
+  opacity: 0.75;
+}
+
+/* ── Role ── */
+.role {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: auto;
+}
+
+.roleTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  color: var(--color-ink);
+}
+
+.roleLocation {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ── Bottom row ── */
+.bottom {
+  position: absolute;
+  bottom: clamp(2rem, 5vw, 4rem);
+  left: clamp(2rem, 7vw, 8rem);
+  right: clamp(2rem, 7vw, 8rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.year {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.yearLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.yearValue {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-border);
+  line-height: 1;
+}
+
+/* ── Next chapter hint button ── */
+.nextHint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 0;
+}
+
+.nextText {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nextArrow {
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  transition: transform var(--dur-fast) var(--ease-snappy),
+              color var(--dur-fast) var(--ease-out);
+}
+
+.nextHint:hover .nextText,
+.nextHint:hover .nextArrow { color: var(--color-ink); }
+.nextHint:hover .nextArrow { transform: translateX(4px); }
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .status { top: 5rem; }
+  .nameWrapper { margin-top: 2.5rem; }
+  .name { font-size: clamp(3.5rem, 16vw, 6rem); }
+}

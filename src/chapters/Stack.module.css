@@ -1,0 +1,157 @@
+.stack {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(4.5rem, 7vw, 7rem) clamp(2rem, 7vw, 8rem);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.headerLabel {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* ── Column ── */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ── Skill list ── */
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.skill {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0.3rem 0;
+  cursor: default;
+  overflow: hidden;
+}
+
+.skillText {
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--color-ink);
+  line-height: 1.4;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.skill:hover .skillText {
+  opacity: 0.6;
+}
+
+/* Underline draw on hover */
+.skillUnderline {
+  display: block;
+  height: 1px;
+  background: var(--color-ink);
+  width: 0;
+  transition: width 0.3s var(--ease-smooth);
+}
+
+.skill:hover .skillUnderline {
+  width: 100%;
+}
+
+/* ── Currently Learning ── */
+.learning {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.learningLabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.learningItems {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.learningItem {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--color-muted);
+}
+
+.learningDot {
+  color: var(--color-border);
+  font-style: normal;
+  font-family: var(--font-body);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

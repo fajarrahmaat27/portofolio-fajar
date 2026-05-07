@@ -29,7 +29,7 @@ const SKILLS = [
   },
 ]
 
-const LEARNING = ['Web3 Fundamentals', 'Rust', 'Advanced Figma', 'System Design']
+const LEARNING = ['DevOps', '.NET']
 
 function SkillColumn({ category, items, delay, visible }) {
   return (

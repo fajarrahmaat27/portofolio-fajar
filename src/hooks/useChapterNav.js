@@ -31,6 +31,12 @@ export function useChapterNav() {
     const el = chapterScrollRef.current
     if (!el) return false
 
+    // CRITICAL FIX: On desktop (>= 768px), ONLY the Work chapter (index 2) should ever intercept scrolling.
+    // This ensures Intro, About, Stack, and Contact always transition instantly with exactly ONE scroll on desktop.
+    if (current !== WORK_CHAPTER_INDEX && window.innerWidth >= 768) {
+      return false
+    }
+
     // If element can't scroll at all, don't intercept
     if (el.scrollHeight <= el.clientHeight + 2) return false
 
@@ -43,8 +49,8 @@ export function useChapterNav() {
         boundaryTimeRef.current.top = now
         return true // Intercept first scroll at top
       }
-      if (now - boundaryTimeRef.current.top > 300) {
-        return false // Allow nav after 300ms of scrolling at top
+      if (now - boundaryTimeRef.current.top > 150) {
+        return false // Allow nav after 150ms of scrolling at top
       }
       return true // Still blocking
     } else {
@@ -56,8 +62,8 @@ export function useChapterNav() {
         boundaryTimeRef.current.bottom = now
         return true // Intercept first scroll at bottom
       }
-      if (now - boundaryTimeRef.current.bottom > 300) {
-        return false // Allow nav after 300ms of scrolling at bottom
+      if (now - boundaryTimeRef.current.bottom > 150) {
+        return false // Allow nav after 150ms of scrolling at bottom
       }
       return true // Still blocking
     } else {
@@ -65,7 +71,7 @@ export function useChapterNav() {
     }
 
     return true // in the middle → block chapter nav, let it scroll internally
-  }, [])
+  }, [current])
 
   useEffect(() => {
     const handleWheel = (e) => {

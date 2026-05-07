@@ -113,23 +113,17 @@ img, video {
   inset: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 7vw, 8rem);
-}
-
-/* The Work chapter allows internal scroll */
-.chapter--scrollable {
-  align-items: stretch;
-  justify-content: flex-start;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-top: 5rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.chapter::-webkit-scrollbar {
+  display: none;
+}
+
+/* We don't need chapter--scrollable modifier anymore since all chapters scroll naturally if needed */
+.chapter--scrollable {}
 
 /* ── UTILITY ── */
 .u-mono {

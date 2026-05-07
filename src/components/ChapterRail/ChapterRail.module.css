@@ -1,0 +1,140 @@
+.rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* ── Progress bar ── */
+.progressTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 600ms var(--ease-smooth);
+  transform-origin: left;
+}
+
+/* ── Inner nav bar ── */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem clamp(1.5rem, 5vw, 4rem);
+  background: transparent;
+}
+
+/* ── Brand ── */
+.brand {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.brand:hover { opacity: 1; }
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 0.25rem 0;
+}
+
+.dotInner {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-snappy);
+}
+
+.dot:hover .dotInner {
+  background: var(--color-muted);
+  transform: scale(1.4);
+}
+
+.dotActive .dotInner {
+  background: var(--color-ink);
+  transform: scale(1.5);
+}
+
+.dotLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.dot:hover .dotLabel,
+.dotActive .dotLabel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dotActive .dotLabel {
+  color: var(--color-ink);
+}
+
+/* ── Counter ── */
+.counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.counterCurrent {
+  color: var(--color-ink);
+  font-weight: 400;
+  transition: color var(--dur-mid) var(--ease-out);
+}
+
+.counterSep {
+  margin: 0 0.1rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .dotLabel { display: none; }
+  .brand { display: none; }
+}
